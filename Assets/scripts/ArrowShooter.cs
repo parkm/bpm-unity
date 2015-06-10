@@ -4,10 +4,15 @@ using System.Collections;
 public class ArrowShooter : MonoBehaviour {
 	public Camera cam;
 	public GameObject pin;
+	public int ammoMax = 10;
+	public float ammoRegenTime = 2;
+
+	private int ammo = 0;
+	private float ammoRegenTimer = 0;
 
 	// Use this for initialization
 	void Start () {
-
+		this.ammo = this.ammoMax;
 	}
 	
 	// Update is called once per frame
@@ -19,9 +24,22 @@ public class ArrowShooter : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			onMouseDown();
 		}
+
+		if (ammo < ammoMax) {
+			this.ammoRegenTimer += Time.deltaTime;
+			if (this.ammoRegenTimer >= this.ammoRegenTime) {
+				this.ammo++;
+				this.ammoRegenTimer = 0;
+			}
+		}
 	}
 
 	void onMouseDown() {
+		if (this.ammo <= 0)
+			return;
+
+		this.ammo--;
+
 		GameObject pin = Instantiate (this.pin);
 		pin.transform.position = this.transform.position;
 		pin.transform.rotation = this.transform.rotation;
