@@ -1,0 +1,10 @@
+Assets/res/gfx
+Library
+Temp
+test_Data
+
+*.csproj
+*.sln
+*.exe
+*.apk
+*.userprefs
