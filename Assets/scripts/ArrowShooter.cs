@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class ArrowShooter : MonoBehaviour {
-    public Camera cam;
     public GameObject pin;
     public int ammoMax = 10;
     public float ammoRegenTime = 2;
@@ -17,7 +16,7 @@ public class ArrowShooter : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2(mousePos.y - this.transform.position.y, mousePos.x - this.transform.position.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.Euler(0, 0, angle);
 
