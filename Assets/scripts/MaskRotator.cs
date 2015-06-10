@@ -19,7 +19,7 @@ public class MaskRotator : MonoBehaviour {
     }
 
     // Rotates the mask based on the ratio. 0.0 = minRotation, 1.0 = maxRotation
-    void setMaskRotation(float ratio) {
+    public void setMaskRotation(float ratio) {
         Vector3 origin = child.transform.position;
         child.transform.SetParent(null);
 

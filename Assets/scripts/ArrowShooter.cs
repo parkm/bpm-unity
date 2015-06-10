@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class ArrowShooter : MonoBehaviour {
     public GameObject pin;
     public int ammoMax = 10;
     public float ammoRegenTime = 2;
+
+    public event Action<float, float> ammoRegenTimerUpdate = delegate(float timer, float time) {};
 
     private int ammo = 0;
     private float ammoRegenTimer = 0;
@@ -26,6 +29,7 @@ public class ArrowShooter : MonoBehaviour {
 
         if (ammo < ammoMax) {
             this.ammoRegenTimer += Time.deltaTime;
+            ammoRegenTimerUpdate(this.ammoRegenTimer, this.ammoRegenTime);
             if (this.ammoRegenTimer >= this.ammoRegenTime) {
                 this.ammo++;
                 this.ammoRegenTimer = 0;
