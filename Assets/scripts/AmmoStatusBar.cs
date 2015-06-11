@@ -4,7 +4,7 @@ using System.Collections;
 public class AmmoStatusBar : MonoBehaviour {
 
     public ArrowShooter arrowShooter;
-    public MaskRotator maskRotator;
+    public BoundRotator boundRotator;
 
     void Awake() {
         arrowShooter.ammoRegenTimerUpdate += updateRegenTimerGui;
@@ -16,6 +16,6 @@ public class AmmoStatusBar : MonoBehaviour {
 
     void updateRegenTimerGui(float timer, float time) {
         Debug.Log(timer / time);
-        maskRotator.setMaskRotation(1 - (timer / time));
+        boundRotator.setRotation(1 - (timer / time));
     }
 }
