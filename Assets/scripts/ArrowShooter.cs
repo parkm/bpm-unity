@@ -8,6 +8,7 @@ public class ArrowShooter : MonoBehaviour {
     public float ammoRegenTime = 2;
 
     public event Action<float, float> ammoRegenTimerUpdate = delegate(float timer, float time) {};
+    public event Action<int> ammoChange = delegate(int ammo) {};
 
     private int ammo = 0;
     private float ammoRegenTimer = 0;
@@ -15,6 +16,7 @@ public class ArrowShooter : MonoBehaviour {
     // Use this for initialization
     void Start () {
         this.ammo = this.ammoMax;
+        ammoChange(this.ammo);
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class ArrowShooter : MonoBehaviour {
             ammoRegenTimerUpdate(this.ammoRegenTimer, this.ammoRegenTime);
             if (this.ammoRegenTimer >= this.ammoRegenTime) {
                 this.ammo++;
+                ammoChange(this.ammo);
                 this.ammoRegenTimer = 0;
             }
         }
@@ -42,6 +45,7 @@ public class ArrowShooter : MonoBehaviour {
             return;
 
         this.ammo--;
+        ammoChange(this.ammo);
 
         GameObject pin = Instantiate(this.pin);
         pin.transform.position = this.transform.position;
