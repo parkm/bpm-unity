@@ -5,6 +5,7 @@ test_Data
 *.csproj
 *.sln
 *.unityproj
+*.pdb
 *.exe
 *.apk
 *.userprefs
