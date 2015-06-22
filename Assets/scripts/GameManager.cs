@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 
     void Awake() {
         //setCurrentLevel(availableLevels[1]);
-        setCurrentLevel("testLevel");
+        setCurrentLevel("spinnyLevel");
     }
 
     public void setCurrentLevel(Level level) {

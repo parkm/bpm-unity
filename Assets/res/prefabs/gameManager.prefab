@@ -43,6 +43,7 @@ MonoBehaviour:
   - {fileID: 11481086, guid: 18cbf593da4828443a946cea43747697, type: 2}
   - {fileID: 11436754, guid: 052ed49c4e8900d419f08e9f69738ef7, type: 2}
   - {fileID: 11457140, guid: 0991b25298305b94d871856bd9c3107e, type: 2}
+  - {fileID: 11460700, guid: d1f3aa621b8feef43b929aa8e5e1a772, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
