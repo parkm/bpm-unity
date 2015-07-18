@@ -7,6 +7,8 @@ public class Pin : MonoBehaviour {
 
     public Vector2 maxVelocity = new Vector2(5,5);
 
+    public int damage = 1;
+
     public float lifeTime = 10;
     float lifeTimer = 0;
 
@@ -30,12 +32,12 @@ public class Pin : MonoBehaviour {
         spriteRenderer.color = new Color(1, 1, 1, Mathf.Sqrt(1-lifeRatio) + (lifeRatio)/4);
 
         if (lifeTimer >= lifeTime) {
-            Instantiate(pinDestroyed, transform.position, Quaternion.identity);
-            destroy();
+            Die();
         }
     }
 
-    void destroy() {
+    public void Die() {
+        Instantiate(pinDestroyed, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
@@ -59,7 +61,7 @@ public class Pin : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.tag == "Bubble") {
-            collider.gameObject.GetComponent<Bubble>().onDeathFromPin();
+            collider.gameObject.GetComponent<Bubble>().OnPinCollision(this);
         }
     }
 
