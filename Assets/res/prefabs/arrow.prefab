@@ -40,8 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e00bc52aae3b534facccd771539807c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  pin: {fileID: 0}
+  pin: {fileID: 131600, guid: abfb12b2f1061354fa57a70431942211, type: 2}
+  ammoMax: 10
+  ammoRegenTime: 2
 --- !u!212 &21216198
 SpriteRenderer:
   m_ObjectHideFlags: 1

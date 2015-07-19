@@ -4,4 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/scenes/main.unity
+  - enabled: 1
+    path: Assets/scenes/town/AnotherLevel.unity
+  - enabled: 1
+    path: Assets/scenes/town/NewLevel.unity
+  - enabled: 1
+    path: Assets/scenes/town/SpinnyLevel.unity
+  - enabled: 1
+    path: Assets/scenes/town/TestLevel.unity
