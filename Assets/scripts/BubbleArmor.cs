@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class BubbleArmor : MonoBehaviour {
+    public Hashtable sprites;
     public Sprite[] armorSprites;
     public int[] healthLimits;
-    public Sprite currentArmor;
 
     private Bubble parentBubble;
     private SpriteRenderer spriteRenderer;

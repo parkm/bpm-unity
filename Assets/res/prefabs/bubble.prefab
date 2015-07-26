@@ -144,17 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorSprites:
-  - {fileID: 21300000, guid: 168fd6c4e73c0f54b8959955472db749, type: 3}
-  - {fileID: 21300000, guid: dce65eca9e3374e4594c3c56728dde67, type: 3}
-  - {fileID: 21300000, guid: 58887b54c9f67d34887c3ab7c661885a, type: 3}
-  - {fileID: 21300000, guid: dea793d5cab74b349b56444b2060a6f7, type: 3}
-  - {fileID: 21300000, guid: 2406ce5b9e41439498e8151180136adc, type: 3}
-  - {fileID: 21300000, guid: 895d3d19c8ecbea4dbd2a9b36c1b2d31, type: 3}
-  - {fileID: 21300000, guid: 1e91e2aa747110044b3118999f9cfdfb, type: 3}
-  - {fileID: 21300000, guid: 6322ad5c0053f664db3408b383f3ebfe, type: 3}
-  - {fileID: 21300000, guid: 693fa056619c97049a709141a405f2d0, type: 3}
+  - {fileID: 21300000, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300002, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300004, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300006, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300008, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300010, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300012, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300014, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
+  - {fileID: 21300016, guid: 2fbadb1224de29f4db508345f6896eef, type: 3}
   healthLimits: 0200000004000000080000000b0000001000000014000000190000001e00000028000000
-  currentArmor: {fileID: 0}
 --- !u!212 &21221730
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -239,7 +238,56 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300004, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300006, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300008, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300010, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 21300012, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 21300014, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: armorSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 21300016, guid: 2fbadb1224de29f4db508345f6896eef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169358}
