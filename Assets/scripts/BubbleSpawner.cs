@@ -3,8 +3,10 @@ using System.Collections;
 
 public class BubbleSpawner : MonoBehaviour {
 
-    public GameObject bubble;
+    public Bubble bubble;
     public float spawnTime = 1;
+    public int minHealth = 1;
+    public int maxHealth = 20;
 
     MeshRenderer mesh;
 
@@ -24,10 +26,11 @@ public class BubbleSpawner : MonoBehaviour {
     }
 
     void spawn() {
-        GameObject bubble = Instantiate(this.bubble);
+        Bubble bubble = Instantiate(this.bubble);
         Vector3 min = mesh.bounds.min;
         Vector3 max = mesh.bounds.max;
         bubble.transform.position = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
+        bubble.health = Random.Range(minHealth, maxHealth);
         //Debug.Log (bubble.transform.position);
         Invoke("spawn", spawnTime);
     }
