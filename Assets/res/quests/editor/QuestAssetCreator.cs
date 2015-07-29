@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class QuestAsset {
+public class QuestAssetCreator {
     [MenuItem("Assets/Create/Quest")]
     public static void CreateAsset() {
-        ScriptableObjectUtility.CreateAsset<Quest>();
+        ScriptableObjectUtility.CreateAsset<QuestAsset>();
     }
 }

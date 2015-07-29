@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Quest : ScriptableObject {
+public class QuestAsset : ScriptableObject {
     public string id;
     public string questName;
     [TextArea()]
