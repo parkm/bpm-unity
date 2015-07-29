@@ -8,13 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da240e7b82052ea4890cc3c2c5edc2ca, type: 3}
-  m_Name: testQuest
+  m_Script: {fileID: 11500000, guid: 419d5499ad2e4ae45bc9abeea2309258, type: 3}
+  m_Name: town
   m_EditorClassIdentifier: 
-  id: test01
-  questName: Test Quest
-  description: This is a test.
-  rewardXp: 10
-  details:
-  - detailName: 0
-    value: 5
+  areaName: Town
+  quests: []
