@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: town
   m_EditorClassIdentifier: 
   areaName: Town
-  quests: []
+  quests:
+  - {fileID: 11400000, guid: 95e66759ed979c24b8e67b8fe4a5491d, type: 2}

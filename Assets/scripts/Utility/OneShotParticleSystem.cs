@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class OneShotParticleSystem : MonoBehaviour {
-    public ParticleSystem particleSystem;
+    public ParticleSystem system;
     void Update () {
-        if (!this.particleSystem.IsAlive()) {
+        if (!this.system.IsAlive()) {
             Destroy(this.gameObject);
         }
     }

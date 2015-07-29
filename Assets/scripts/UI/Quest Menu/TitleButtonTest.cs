@@ -6,7 +6,9 @@ public class TitleButtonTest : MonoBehaviour {
     public Transform questDropDownPrefab;
     public Transform questButton;
 
-    public string[] quests;
+    public string[] questStrings;
+
+    public QuestAsset[] quests;
 
     private Transform questDropDown;
 
@@ -19,9 +21,15 @@ public class TitleButtonTest : MonoBehaviour {
             dropDown.SetSiblingIndex(this.transform.GetSiblingIndex()+1);
             this.questDropDown = dropDown;
 
-            foreach (string questName in quests) {
+            foreach (string questName in this.questStrings) {
                 Transform questButton = Instantiate(this.questButton);
                 questButton.Find("Text").GetComponent<Text>().text = questName;
+                questButton.SetParent(dropDown);
+            }
+
+            foreach (QuestAsset quest in this.quests) {
+                Transform questButton = Instantiate(this.questButton);
+                questButton.Find("Text").GetComponent<Text>().text = quest.questName;
                 questButton.SetParent(dropDown);
             }
         } else {
