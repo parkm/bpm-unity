@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour {
         if (toSwitch != 0) {
             Application.LoadLevel(Application.loadedLevel + toSwitch);
         }
+
+        if (Input.GetKey(KeyCode.Escape)) {
+            Application.LoadLevel("questMenu");
+        }
     }
 
 }

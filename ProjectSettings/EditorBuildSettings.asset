@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/scenes/town/SpinnyLevel.unity
   - enabled: 1
     path: Assets/scenes/town/TestLevel.unity
+  - enabled: 1
+    path: Assets/scenes/questMenu.unity
