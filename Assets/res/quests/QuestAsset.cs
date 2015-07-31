@@ -7,6 +7,7 @@ public class QuestAsset : ScriptableObject {
     [TextArea()]
     public string description;
     public int rewardXp;
+	public Object scene;
 
     [System.Serializable]
     public class Detail {

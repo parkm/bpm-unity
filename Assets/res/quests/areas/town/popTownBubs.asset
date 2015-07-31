@@ -15,4 +15,5 @@ MonoBehaviour:
   questName: Pop Town Bubs
   description: Pop some bubbles in the town!
   rewardXp: 0
+  scene: {fileID: 102900000, guid: 649a28a7a727f5a419c2ad1b9346d848, type: 3}
   details: []
