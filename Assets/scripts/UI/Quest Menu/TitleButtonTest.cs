@@ -13,7 +13,6 @@ public class TitleButtonTest : MonoBehaviour {
     private Transform questDropDown;
 
     public void OnClick() {
-        Debug.Log("Clicked Title Button");
         if  (this.questDropDown == null) {
             Transform dropDown = Instantiate(this.questDropDownPrefab);
 
@@ -30,6 +29,7 @@ public class TitleButtonTest : MonoBehaviour {
             foreach (QuestAsset quest in this.quests) {
                 Transform questButton = Instantiate(this.questButton);
                 questButton.Find("Text").GetComponent<Text>().text = quest.questName;
+                questButton.GetComponent<QuestButtonTest>().quest = quest;
                 questButton.SetParent(dropDown);
             }
         } else {
