@@ -497,6 +497,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b99b66e7827270489f26c0bda8e078f, type: 2}
   questButton: {fileID: 22409310, guid: 1699a8bfa8c776f4e90115a8ecbdcd31, type: 2}
   titleButton: {fileID: 11456034, guid: 89aea9e8dd0014840a9c6af1127cec93, type: 2}
+  otherScenes:
+  - {fileID: 102900000, guid: 649a28a7a727f5a419c2ad1b9346d848, type: 3}
+  - {fileID: 102900000, guid: d8f9389929109a74d83a7abd60146950, type: 3}
+  - {fileID: 102900000, guid: 63adb0be945a68a488e2ed4c70609454, type: 3}
+  - {fileID: 102900000, guid: 7c630a0f0157d3b4f820b7c30e69ea56, type: 3}
 --- !u!1 &1080773599
 GameObject:
   m_ObjectHideFlags: 0
