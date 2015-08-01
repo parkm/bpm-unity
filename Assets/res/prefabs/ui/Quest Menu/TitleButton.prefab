@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .274437696, g: 1, b: .191176474, a: 1}
+  m_Color: {r: .972549021, g: .972549021, b: .972549021, a: 1}
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   questDropDownPrefab: {fileID: 22439970, guid: e9ff1cec0dec3844e921e6dcb08f751f,
     type: 2}
   questButton: {fileID: 22409310, guid: 1699a8bfa8c776f4e90115a8ecbdcd31, type: 2}
+  quests: []
+  otherScenes: []
 --- !u!114 &11462620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,10 +196,10 @@ RectTransform:
   - {fileID: 22471352}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .5}
-  m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 0, y: 98.1999969}
-  m_SizeDelta: {x: -133.300003, y: 24}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22471352
 RectTransform:
