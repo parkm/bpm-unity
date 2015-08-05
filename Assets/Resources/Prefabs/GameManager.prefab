@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 426110}
   - 114: {fileID: 11463616}
   m_Layer: 0
-  m_Name: gameManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,11 +39,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc444ee105de3c48b320fdf49009aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableLevels:
-  - {fileID: 11481086, guid: 18cbf593da4828443a946cea43747697, type: 2}
-  - {fileID: 11436754, guid: 052ed49c4e8900d419f08e9f69738ef7, type: 2}
-  - {fileID: 11457140, guid: 0991b25298305b94d871856bd9c3107e, type: 2}
-  - {fileID: 11460700, guid: d1f3aa621b8feef43b929aa8e5e1a772, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

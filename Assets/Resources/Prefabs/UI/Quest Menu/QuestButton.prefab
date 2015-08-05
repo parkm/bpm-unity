@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11454164}
   - 114: {fileID: 11448582}
   m_Layer: 5
-  m_Name: questButton
+  m_Name: QuestButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: fire-16x25-strip6_
+  m_Name: FireAnim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
