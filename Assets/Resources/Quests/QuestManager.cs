@@ -9,6 +9,8 @@ public class QuestManager : MonoBehaviour {
 
     private Dictionary<string, QuestAsset> questIdDict = new Dictionary<string, QuestAsset>();
 
+    public QuestAsset CurrentQuest { get; set; }
+
     void Awake() {
         if (QuestManager.Instance == null) {
             QuestManager.Instance = this;

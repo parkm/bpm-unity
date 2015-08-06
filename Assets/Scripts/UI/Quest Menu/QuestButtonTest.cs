@@ -18,6 +18,7 @@ public class QuestButtonTest : MonoBehaviour {
             Debug.LogError("No quest associated with this button.");
             return;
         }
+        QuestManager.Instance.CurrentQuest = quest;
         Application.LoadLevel(quest.scene.name);
     }
 }
