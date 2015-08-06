@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Bubble : MonoBehaviour {
     public float descendSpeed = 0.25f;
     public int health = 1;
     public GameObject bubblePopped;
+
+    public static event Action<Bubble> OnPop = delegate(Bubble bubble) {};
 
     // Use this for initialization
     void Start () {
@@ -32,6 +35,7 @@ public class Bubble : MonoBehaviour {
     }
 
     public void OnDeathFromPin() {
+        OnPop(this);
         Instantiate(bubblePopped, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }

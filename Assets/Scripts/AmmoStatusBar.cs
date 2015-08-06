@@ -18,7 +18,6 @@ public class AmmoStatusBar : MonoBehaviour {
     }
 
     void updateRegenTimerGui(float timer, float time) {
-        Debug.Log(timer / time);
         boundRotator.setRotation(1 - (timer / time));
     }
 

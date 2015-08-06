@@ -16,6 +16,9 @@ public class QuestAsset : ScriptableObject {
         public enum Types {Multiplier, PopBubbles};
         public Types objectiveType;
         public string value;
+
+        [System.NonSerialized]
+        public bool completed = false;
     };
     public Objective[] objectives;
 
