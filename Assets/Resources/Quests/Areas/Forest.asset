@@ -8,14 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da240e7b82052ea4890cc3c2c5edc2ca, type: 3}
-  m_Name: PopTownBubs
+  m_Script: {fileID: 11500000, guid: 419d5499ad2e4ae45bc9abeea2309258, type: 3}
+  m_Name: Forest
   m_EditorClassIdentifier: 
-  id: town01
-  questName: Pop Town Bubs
-  description: Pop some bubbles in the town!
-  rewardXp: 0
-  scene: {fileID: 102900000, guid: 649a28a7a727f5a419c2ad1b9346d848, type: 3}
-  unlocks:
+  areaName: Forest
+  quests:
   - {fileID: 11400000, guid: 35c7c03c20180bb4d8bae2e7458baab6, type: 2}
-  details: []

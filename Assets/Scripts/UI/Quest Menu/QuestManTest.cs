@@ -5,8 +5,6 @@ using System.Collections;
 public class QuestManTest : MonoBehaviour {
 
     public Transform questsPanel;
-    public QuestAreaAsset[] questAreas;
-
     public Transform questButton;
     public TitleButtonTest titleButton;
 
@@ -16,7 +14,7 @@ public class QuestManTest : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        foreach (QuestAreaAsset a in this.questAreas) {
+        foreach (QuestAreaAsset a in QuestManager.Instance.areas) {
             Transform titleButton = Instantiate(this.titleButton.transform);
             titleButton.GetComponent<TitleButtonTest>().quests = a.quests;
             titleButton.Find("Text").GetComponent<Text>().text = a.areaName;
