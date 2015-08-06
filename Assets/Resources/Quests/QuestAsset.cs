@@ -12,12 +12,12 @@ public class QuestAsset : ScriptableObject {
     public QuestAsset[] unlocks = new QuestAsset[1];
 
     [System.Serializable]
-    public class Detail {
-        public enum DetailNames {Multiplier, PopBubbles};
-        public DetailNames detailName;
+    public class Objective {
+        public enum Types {Multiplier, PopBubbles};
+        public Types objectiveType;
         public string value;
     };
-    public Detail[] details;
+    public Objective[] objectives;
 
     [System.NonSerialized]
     public QuestAreaAsset area;
