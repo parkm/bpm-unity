@@ -18,4 +18,4 @@ MonoBehaviour:
   scene: {fileID: 0}
   unlocks:
   - {fileID: 11400000, guid: 35c7c03c20180bb4d8bae2e7458baab6, type: 2}
-  details: []
+  objectiveData: []
