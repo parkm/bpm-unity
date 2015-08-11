@@ -31,6 +31,8 @@ public class LevelManager : MonoBehaviour {
         Debug.Log("quest complete!");
         this.onQuestCompleteUi.SetActive(true);
 
+        questMan.UnlockNewQuests(questMan.CurrentQuest);
+
         //temp
         Button button = this.onQuestCompleteUi.transform.Find("Panel/Button").GetComponent<Button>();
         button.onClick.AddListener(onContinueButtonClick);

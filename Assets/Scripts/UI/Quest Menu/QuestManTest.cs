@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 
 public class QuestManTest : MonoBehaviour {
 
@@ -12,12 +12,16 @@ public class QuestManTest : MonoBehaviour {
     [Tooltip("Used for other scenes that you want to access.")]
     public Object[] otherScenes;
 
+    private QuestManager questMan;
+
     // Use this for initialization
     void Start () {
-        foreach (QuestAreaAsset a in QuestManager.Instance.areas) {
+        questMan = QuestManager.Instance;
+
+        foreach (QuestAreaAsset area in questMan.GetAvailableAreas()) {
             Transform titleButton = Instantiate(this.titleButton.transform);
-            titleButton.GetComponent<TitleButtonTest>().quests = a.quests;
-            titleButton.Find("Text").GetComponent<Text>().text = a.areaName;
+            titleButton.GetComponent<TitleButtonTest>().quests = questMan.GetAvailableQuests(area).ToArray();
+            titleButton.Find("Text").GetComponent<Text>().text = area.areaName;
             titleButton.SetParent(questsPanel);
         }
 

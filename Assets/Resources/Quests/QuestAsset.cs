@@ -37,7 +37,7 @@ public class QuestAsset : ScriptableObject {
 
     // Quests that are required to be completed before this quest unlocks.
     [System.NonSerialized]
-    public List<string> requiredToUnlock = new List<string>();
+    public List<QuestAsset> requiredToUnlock = new List<QuestAsset>();
 
     [System.NonSerialized]
     public List<QuestObjective> objectives = new List<QuestObjective>();
