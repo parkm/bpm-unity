@@ -9,19 +9,26 @@ public class LevelManager : MonoBehaviour {
     private QuestManager questMan;
 
     void Start() {
-        questMan = QuestManager.Instance;
-        quest = questMan.CurrentQuest;
+        if (QuestManager.Instance != null) {
+            questMan = QuestManager.Instance;
+            quest = questMan.CurrentQuest;
+
+            questMan.OnQuestComplete += OnQuestComplete;
+        }
 
         Bubble.OnPop += OnBubblePop;
-        questMan.OnQuestComplete += OnQuestComplete;
     }
 
     void OnDestroy() {
         Bubble.OnPop -= OnBubblePop;
-        questMan.OnQuestComplete -= OnQuestComplete;
+
+        if (questMan != null) {
+            questMan.OnQuestComplete -= OnQuestComplete;
+        }
     }
 
     void OnBubblePop(Bubble bubble) {
+        if (quest == null) return;
         if (quest.HasObjective(QuestObjective.Types.PopBubbles)) {
             quest.GetObjective(QuestObjective.Types.PopBubbles)[0].Update();
         }
