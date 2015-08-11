@@ -42,6 +42,9 @@ public class QuestAsset : ScriptableObject {
     [System.NonSerialized]
     public List<QuestObjective> objectives = new List<QuestObjective>();
 
+    [System.NonSerialized]
+    public bool completed = false;
+
     public bool HasObjective(QuestObjective.Types type) {
         foreach (QuestObjective objective in this.objectives) {
             if (objective.type == type) {
@@ -63,11 +66,13 @@ public class QuestAsset : ScriptableObject {
 
     // Returns if quest is complete.
     public bool IsComplete() {
+        if (this.completed) return true;
         foreach (QuestObjective objective in this.objectives) {
             if (objective.completed == false) {
                 return false;
             }
         }
+        this.completed = true;
         return true;
     }
 }

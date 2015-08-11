@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
+    public GameObject onQuestCompleteUi;
+
     private QuestAsset quest;
     private QuestManager questMan;
 
@@ -19,7 +22,6 @@ public class LevelManager : MonoBehaviour {
     }
 
     void OnBubblePop(Bubble bubble) {
-        Debug.Log("POP");
         if (quest.HasObjective(QuestObjective.Types.PopBubbles)) {
             quest.GetObjective(QuestObjective.Types.PopBubbles)[0].Update();
         }
@@ -27,6 +29,15 @@ public class LevelManager : MonoBehaviour {
 
     void OnQuestComplete(QuestAsset quest) {
         Debug.Log("quest complete!");
+        this.onQuestCompleteUi.SetActive(true);
+
+        //temp
+        Button button = this.onQuestCompleteUi.transform.Find("Panel/Button").GetComponent<Button>();
+        button.onClick.AddListener(onContinueButtonClick);
+    }
+    //temp
+    void onContinueButtonClick() {
+        Application.LoadLevel("questMenu");
     }
 
     void Update() {
