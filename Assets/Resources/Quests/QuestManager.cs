@@ -7,13 +7,15 @@ public class QuestManager : MonoBehaviour {
     public static QuestManager Instance { get; private set; }
 
     public QuestAreaAsset[] areas;
+    public QuestAsset startingQuest;
 
-    public event Action<QuestAsset> OnQuestComplete = delegate(QuestAsset quest) {};
+    public event Action<Quest> OnQuestComplete = delegate(Quest quest) {};
 
-    private Dictionary<string, QuestAsset> questIdDict = new Dictionary<string, QuestAsset>();
-    private List<QuestAsset> availableQuests = new List<QuestAsset>();
+    private List<Quest> availableQuests = new List<Quest>();
 
-    public QuestAsset CurrentQuest { get; set; }
+    private Dictionary<QuestAsset, Quest> questAssetToQuest = new Dictionary<QuestAsset, Quest>();
+
+    public Quest CurrentQuest { get; set; }
 
     void Awake() {
         if (QuestManager.Instance == null) {
@@ -26,63 +28,61 @@ public class QuestManager : MonoBehaviour {
 
         // Add quests from areas to the dictionary.
         foreach (QuestAreaAsset area in this.areas) {
-            foreach (QuestAsset quest in area.quests) {
+            foreach (QuestAsset questAsset in area.quests) {
+                Quest quest = new Quest(questAsset);
                 quest.area = area;
-                this.questIdDict.Add(quest.id, quest);
+                this.questAssetToQuest.Add(questAsset, quest);
             }
         }
 
-        foreach (QuestAsset quest in this.GetQuests()) {
+        foreach (Quest quest in this.GetQuests()) {
             // Have quests keep track of what other quests are needed to unlock the quest.
-            if (quest.unlocks.Length > 0) {
-                foreach (QuestAsset unlockQuest in quest.unlocks) {
-                    if (unlockQuest == null) continue;
+            if (quest.asset.unlocks.Length > 0) {
+                foreach (QuestAsset questAsset in quest.asset.unlocks) {
+                    if (questAsset == null) continue;
+                    Quest unlockQuest = this.GetQuestByAsset(questAsset);
                     unlockQuest.requiredToUnlock.Add(quest);
                 }
             }
 
-            // Create quest objectives from objective data.
-            foreach (QuestAsset.ObjectiveData objectiveData in quest.objectiveData) {
-                QuestObjective objective = QuestObjective.CreateObjective(objectiveData);
-                objective.OnComplete += OnQuestObjectiveComplete;
-                quest.objectives.Add(objective);
-            }
+            quest.CreateObjectives();
         }
 
-        availableQuests.Add(this.GetQuestFromId("town01"));
+        availableQuests.Add(this.GetQuestByAsset(startingQuest));
     }
 
-    void OnQuestObjectiveComplete(QuestObjective objective) {
+    public void OnQuestObjectiveComplete(QuestObjective objective) {
         Debug.Log("objective complete");
         if (this.CurrentQuest.IsComplete()) {
             OnQuestComplete(this.CurrentQuest);
         }
     }
 
-    public QuestAsset GetQuestFromId(string questId) {
-        return this.questIdDict[questId];
+    public Quest GetQuestByAsset(QuestAsset asset) {
+        return this.questAssetToQuest[asset];
     }
 
-    public Dictionary<string, QuestAsset>.ValueCollection GetQuests() {
-        return this.questIdDict.Values;
+    public Dictionary<QuestAsset, Quest>.ValueCollection GetQuests() {
+        return this.questAssetToQuest.Values;
     }
 
     public List<QuestAreaAsset> GetAvailableAreas() {
         var availableAreas = new List<QuestAreaAsset>();
-        foreach (QuestAsset quest in this.availableQuests) {
+        foreach (Quest quest in this.availableQuests) {
             if (!availableAreas.Contains(quest.area)) availableAreas.Add(quest.area);
         }
         return availableAreas;
     }
 
     // Get all available quests.
-    public List<QuestAsset> GetAvailableQuests() {
+    public List<Quest> GetAvailableQuests() {
         return availableQuests;
     }
     // Get all available quests for an area.
-    public List<QuestAsset> GetAvailableQuests(QuestAreaAsset area) {
-        var quests = new List<QuestAsset>();
-        foreach (QuestAsset quest in area.quests) {
+    public List<Quest> GetAvailableQuests(QuestAreaAsset area) {
+        var quests = new List<Quest>();
+        foreach (QuestAsset questAsset in area.quests) {
+            Quest quest = this.GetQuestByAsset(questAsset);
             if (this.availableQuests.Contains(quest)) quests.Add(quest);
         }
         return quests;
@@ -90,9 +90,10 @@ public class QuestManager : MonoBehaviour {
 
     // Attempts to add new unlocked quests to the availableQuests list.
     // Pass in the recently completed quest.
-    public void UnlockNewQuests(QuestAsset completedQuest) {
+    public void UnlockNewQuests(Quest completedQuest) {
         availableQuests.Remove(completedQuest);
-        foreach (QuestAsset questToUnlock in completedQuest.unlocks) {
+        foreach (QuestAsset questAsset in completedQuest.asset.unlocks) {
+            Quest questToUnlock = this.GetQuestByAsset(questAsset);
             if (this.QuestCanBeUnlocked(questToUnlock)) {
                 availableQuests.Add(questToUnlock);
             }
@@ -100,10 +101,10 @@ public class QuestManager : MonoBehaviour {
     }
 
     // Returns if quest can be unlocked.
-    public bool QuestCanBeUnlocked(QuestAsset quest) {
+    public bool QuestCanBeUnlocked(Quest quest) {
         if (quest.requiredToUnlock.Count <= 0) return true;
 
-        foreach (QuestAsset questNeeded in quest.requiredToUnlock) {
+        foreach (Quest questNeeded in quest.requiredToUnlock) {
             if (!questNeeded.completed) return false;
         }
 

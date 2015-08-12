@@ -5,7 +5,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
     public GameObject onQuestCompleteUi;
 
-    private QuestAsset quest;
+    private Quest quest;
     private QuestManager questMan;
 
     void Start() {
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    void OnQuestComplete(QuestAsset quest) {
+    void OnQuestComplete(Quest quest) {
         Debug.Log("quest complete!");
         this.onQuestCompleteUi.SetActive(true);
 

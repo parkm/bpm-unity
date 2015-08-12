@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class QuestButtonTest : MonoBehaviour {
-    public QuestAsset quest;
+    public Quest quest;
 
     // Debug
     public Object scene;
@@ -19,6 +19,6 @@ public class QuestButtonTest : MonoBehaviour {
             return;
         }
         QuestManager.Instance.CurrentQuest = quest;
-        Application.LoadLevel(quest.scene.name);
+        Application.LoadLevel(quest.asset.scene.name);
     }
 }
