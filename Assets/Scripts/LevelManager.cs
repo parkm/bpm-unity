@@ -29,8 +29,8 @@ public class LevelManager : MonoBehaviour {
 
     void OnBubblePop(Bubble bubble) {
         if (quest == null) return;
-        if (quest.HasObjective(QuestObjective.Types.PopBubbles)) {
-            quest.GetObjective(QuestObjective.Types.PopBubbles)[0].Update();
+        if (quest.HasObjective(ObjectiveInfo.Types.PopBubbles)) {
+            quest.GetObjective(ObjectiveInfo.Types.PopBubbles)[0].Update();
         }
     }
 

@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-using QuestObjectives;
 
 public abstract class QuestObjective {
-    public enum Types {PopBubbles, Multiplier, FindSomething};
-
     public bool completed = false;
     public string status = "";
 
-    public Types type;
+    public ObjectiveInfo.Types type;
     public string goal;
 
     public Dictionary<string, string> attributes;
@@ -18,12 +15,8 @@ public abstract class QuestObjective {
         objective.completed = true;
     };
 
-    public static Dictionary<Types, System.Type> typeToClass = new Dictionary<Types, System.Type>() {
-        {Types.PopBubbles, typeof(PopBubbles)},
-    };
-
     public static QuestObjective CreateObjective(QuestAsset.ObjectiveData data) {
-        QuestObjective objective = (QuestObjective) System.Activator.CreateInstance(typeToClass[data.objectiveType]);
+        QuestObjective objective = (QuestObjective) System.Activator.CreateInstance(ObjectiveInfo.GetClassFromType(data.objectiveType));
         objective.SetData(data);
         return objective;
     }

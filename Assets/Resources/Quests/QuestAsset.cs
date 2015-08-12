@@ -13,7 +13,7 @@ public class QuestAsset : ScriptableObject {
 
     [System.Serializable]
     public class ObjectiveData {
-        public QuestObjective.Types objectiveType;
+        public ObjectiveInfo.Types objectiveType;
         public string goal;
 
         [System.NonSerialized]
@@ -45,7 +45,7 @@ public class QuestAsset : ScriptableObject {
     [System.NonSerialized]
     public bool completed = false;
 
-    public bool HasObjective(QuestObjective.Types type) {
+    public bool HasObjective(ObjectiveInfo.Types type) {
         foreach (QuestObjective objective in this.objectives) {
             if (objective.type == type) {
                 return true;
@@ -54,7 +54,7 @@ public class QuestAsset : ScriptableObject {
         return false;
     }
 
-    public List<QuestObjective> GetObjective(QuestObjective.Types type) {
+    public List<QuestObjective> GetObjective(ObjectiveInfo.Types type) {
         List<QuestObjective> list = new List<QuestObjective>();
         foreach (QuestObjective objective in this.objectives) {
             if (objective.type == type) {
