@@ -21,8 +21,8 @@ public abstract class QuestObjective {
         return objective;
     }
 
-    protected abstract void Init();
-    public abstract void Update();
+    public abstract void OnQuestStart(LevelManager levelMan);
+    public abstract void OnQuestEnd(LevelManager levelMan);
 
     protected void Complete() {
         // Events cannot be called on inherited members, so we wrap around it.
@@ -36,8 +36,6 @@ public abstract class QuestObjective {
         foreach (QuestAsset.ObjectiveData.Attribute attribute in data.attributes) {
             this.attributes.Add(attribute.key, attribute.value);
         }
-
-        this.Init();
     }
 
 }

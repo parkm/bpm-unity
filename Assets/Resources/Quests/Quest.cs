@@ -11,9 +11,34 @@ public class Quest {
     public List<QuestObjective> objectives = new List<QuestObjective>();
 
     public bool completed = false;
+    public bool started = false; // Has the quest been started?
 
     public Quest(QuestAsset asset) {
         this.asset = asset;
+    }
+
+    // Starts the quest by allowing the objectives to attach events.
+    public void Start(LevelManager levelMan) {
+        if (this.started) {
+            Debug.LogError("Quest attempted a restart without ending.");
+            return;
+        }
+        this.started = true;
+        foreach (QuestObjective objective in this.objectives) {
+            objective.OnQuestStart(levelMan);
+        }
+    }
+
+    // Ends the quest which will remove events from the objectives.
+    public void End(LevelManager levelMan) {
+        if (!this.started) {
+            Debug.LogError("Quest cannot be ended until it has been started.");
+            return;
+        }
+        this.started = false;
+        foreach (QuestObjective objective in this.objectives) {
+            objective.OnQuestEnd(levelMan);
+        }
     }
 
     // Create quest objectives from asset objective data.

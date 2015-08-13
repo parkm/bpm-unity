@@ -13,24 +13,15 @@ public class LevelManager : MonoBehaviour {
             questMan = QuestManager.Instance;
             quest = questMan.CurrentQuest;
 
+            quest.Start(this);
             questMan.OnQuestComplete += OnQuestComplete;
         }
-
-        Bubble.OnPop += OnBubblePop;
     }
 
     void OnDestroy() {
-        Bubble.OnPop -= OnBubblePop;
-
         if (questMan != null) {
+            quest.End(this);
             questMan.OnQuestComplete -= OnQuestComplete;
-        }
-    }
-
-    void OnBubblePop(Bubble bubble) {
-        if (quest == null) return;
-        if (quest.HasObjective(ObjectiveInfo.Types.PopBubbles)) {
-            quest.GetObjective(ObjectiveInfo.Types.PopBubbles)[0].Update();
         }
     }
 
@@ -39,13 +30,9 @@ public class LevelManager : MonoBehaviour {
         this.onQuestCompleteUi.SetActive(true);
 
         questMan.UnlockNewQuests(questMan.CurrentQuest);
-
-        //temp
-        Button button = this.onQuestCompleteUi.transform.Find("Panel/Button").GetComponent<Button>();
-        button.onClick.AddListener(onContinueButtonClick);
     }
-    //temp
-    void onContinueButtonClick() {
+
+    public void ExitLevel() {
         Application.LoadLevel("questMenu");
     }
 

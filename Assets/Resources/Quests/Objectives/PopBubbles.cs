@@ -6,7 +6,7 @@ namespace QuestObjectives {
         int goalInt = 0;
         int statusInt = 0;
 
-        protected override void Init() {
+        public override void OnQuestStart(LevelManager levelMan) {
             if (this.status.Length <= 0) {
                 this.status = "0";
                 this.statusInt = 0;
@@ -14,15 +14,21 @@ namespace QuestObjectives {
                 this.statusInt = int.Parse(this.status);
             }
             this.goalInt = int.Parse(this.goal);
+            Bubble.OnPop += OnBubblePop;
         }
 
-        public override void Update() {
+        public override void OnQuestEnd(LevelManager levelMan) {
+            Bubble.OnPop -= OnBubblePop;
+        }
+
+        void OnBubblePop(Bubble bubble) {
             this.statusInt++;
             Debug.Log(this.statusInt);
             if (this.statusInt >= this.goalInt) {
                 this.Complete();
             }
         }
+
     }
 }
 
