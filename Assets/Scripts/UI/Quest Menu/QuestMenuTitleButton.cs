@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class QuestButtonTest : MonoBehaviour {
+public class QuestMenuTitleButton : MonoBehaviour {
     public Quest quest;
 
     // Debug

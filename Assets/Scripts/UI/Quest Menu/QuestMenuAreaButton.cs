@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class TitleButtonTest : MonoBehaviour {
+public class QuestMenuAreaButton : MonoBehaviour {
     public Transform questDropDownPrefab;
     public Transform questButton;
 
@@ -24,7 +24,7 @@ public class TitleButtonTest : MonoBehaviour {
             foreach (Quest quest in this.quests) {
                 Transform questButton = Instantiate(this.questButton);
                 questButton.Find("Text").GetComponent<Text>().text = quest.asset.questName;
-                questButton.GetComponent<QuestButtonTest>().quest = quest;
+                questButton.GetComponent<QuestMenuTitleButton>().quest = quest;
                 questButton.SetParent(dropDown);
             }
 
@@ -32,7 +32,7 @@ public class TitleButtonTest : MonoBehaviour {
             foreach (Object scene in this.otherScenes) {
                 Transform questButton = Instantiate(this.questButton);
                 questButton.Find("Text").GetComponent<Text>().text = scene.name;
-                questButton.GetComponent<QuestButtonTest>().scene = scene;
+                questButton.GetComponent<QuestMenuTitleButton>().scene = scene;
                 questButton.SetParent(dropDown);
             }
         } else {

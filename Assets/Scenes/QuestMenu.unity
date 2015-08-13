@@ -98,7 +98,7 @@ GameObject:
   - 222: {fileID: 34034292}
   - 114: {fileID: 34034291}
   m_Layer: 5
-  m_Name: questsPanel
+  m_Name: QuestsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +510,7 @@ GameObject:
   - 4: {fileID: 1033004187}
   - 114: {fileID: 1033004188}
   m_Layer: 0
-  m_Name: questMan
+  m_Name: QuestMenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,7 +622,7 @@ GameObject:
   - 114: {fileID: 1165499422}
   - 114: {fileID: 1165499421}
   m_Layer: 5
-  m_Name: ui
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,7 +904,7 @@ GameObject:
   - 222: {fileID: 1692520237}
   - 114: {fileID: 1692520236}
   m_Layer: 5
-  m_Name: currentQuest
+  m_Name: CurrentQuest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
