@@ -1,25 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 
-public class QuestManTest : MonoBehaviour {
+public class QuestMenuManager : MonoBehaviour {
 
     public Transform questsPanel;
-    public QuestAreaAsset[] questAreas;
-
     public Transform questButton;
-    public TitleButtonTest titleButton;
+    public QuestMenuAreaButton titleButton;
 
     // Debug
     [Tooltip("Used for other scenes that you want to access.")]
     public Object[] otherScenes;
 
+    private QuestManager questMan;
+
     // Use this for initialization
     void Start () {
-        foreach (QuestAreaAsset a in this.questAreas) {
+        questMan = QuestManager.Instance;
+
+        foreach (QuestAreaAsset area in questMan.GetAvailableAreas()) {
             Transform titleButton = Instantiate(this.titleButton.transform);
-            titleButton.GetComponent<TitleButtonTest>().quests = a.quests;
-            titleButton.Find("Text").GetComponent<Text>().text = a.areaName;
+            titleButton.GetComponent<QuestMenuAreaButton>().quests = questMan.GetAvailableQuests(area).ToArray();
+            titleButton.Find("Text").GetComponent<Text>().text = area.areaName;
             titleButton.SetParent(questsPanel);
         }
 
@@ -27,7 +29,7 @@ public class QuestManTest : MonoBehaviour {
         if (this.otherScenes.Length > 0) {
             Transform titleButton = Instantiate(this.titleButton.transform);
             titleButton.Find("Text").GetComponent<Text>().text = "Other Scenes";
-            titleButton.GetComponent<TitleButtonTest>().otherScenes = this.otherScenes;
+            titleButton.GetComponent<QuestMenuAreaButton>().otherScenes = this.otherScenes;
             titleButton.SetParent(questsPanel);
         }
     }

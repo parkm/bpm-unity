@@ -9,9 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 419d5499ad2e4ae45bc9abeea2309258, type: 3}
-  m_Name: Town
+  m_Name: Forest
   m_EditorClassIdentifier: 
-  areaName: Town
+  areaName: Forest
   quests:
-  - {fileID: 11400000, guid: 95e66759ed979c24b8e67b8fe4a5491d, type: 2}
-  - {fileID: 11400000, guid: 64673626ff41c7e4baf495053590078a, type: 2}
+  - {fileID: 11400000, guid: 35c7c03c20180bb4d8bae2e7458baab6, type: 2}

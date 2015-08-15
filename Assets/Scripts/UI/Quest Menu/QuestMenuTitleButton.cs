@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class QuestButtonTest : MonoBehaviour {
-    public QuestAsset quest;
+public class QuestMenuTitleButton : MonoBehaviour {
+    public Quest quest;
 
     // Debug
     public Object scene;
@@ -18,6 +18,7 @@ public class QuestButtonTest : MonoBehaviour {
             Debug.LogError("No quest associated with this button.");
             return;
         }
-        Application.LoadLevel(quest.scene.name);
+        QuestManager.Instance.CurrentQuest = quest;
+        Application.LoadLevel(quest.asset.scene.name);
     }
 }
