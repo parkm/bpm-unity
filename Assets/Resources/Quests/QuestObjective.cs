@@ -11,6 +11,7 @@ public abstract class QuestObjective {
 
     public Dictionary<string, string> attributes;
 
+    public event Action<QuestObjective> OnUpdate = delegate(QuestObjective objective) {};
     public event Action<QuestObjective> OnComplete = delegate(QuestObjective objective) {
         objective.completed = true;
     };
@@ -23,6 +24,11 @@ public abstract class QuestObjective {
 
     public abstract void OnQuestStart(LevelManager levelMan);
     public abstract void OnQuestEnd(LevelManager levelMan);
+    public abstract string GetDescription();
+
+    public void Update() {
+        this.OnUpdate(this);
+    }
 
     protected void Complete() {
         // Events cannot be called on inherited members, so we wrap around it.

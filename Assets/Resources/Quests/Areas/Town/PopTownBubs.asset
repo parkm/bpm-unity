@@ -22,3 +22,6 @@ MonoBehaviour:
   - objectiveType: 0
     goal: 2
     attributes: []
+  - objectiveType: 0
+    goal: 6
+    attributes: []
