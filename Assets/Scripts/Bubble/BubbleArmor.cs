@@ -26,7 +26,7 @@ public class BubbleArmor : MonoBehaviour {
     }
 
     public void Damage(int amt) {
-        Debug.Log("Damage: " + armorDamage.damage.ToString());
+        /*Debug.Log("Damage: " + armorDamage.damage.ToString());
         // TODO: figure out equation to add damage in even intervals
         for (int i = armorDamage.damage; i < damageIntervals.Length; i++) {
             Debug.Log("i: " + i.ToString() + "  damInt: " + damageIntervals[i].ToString());
@@ -34,7 +34,9 @@ public class BubbleArmor : MonoBehaviour {
                 Debug.Log("bubble.health: " + bubble.health.ToString());
                 armorDamage.Add(amt);
             }
-        }
+        }*/
+        float ratio = (1 - (float) bubble.health / bubble.maxHealth);
+        armorDamage.SetSprite(ratio);
     }
 
     Sprite GetSprite() {

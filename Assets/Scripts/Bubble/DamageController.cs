@@ -18,6 +18,11 @@ public class DamageController : MonoBehaviour {
         damage = 0;
     }
 
+    public void SetSprite(float ratio) {
+        int index = Mathf.CeilToInt(ratio * (damageSprites.Length-1));
+        spriteRenderer.sprite = (Sprite) damageSprites[index];
+    }
+
     // true if damage successful
     // false if too much damage (armor breaks)
     public bool Add(int amt) {
