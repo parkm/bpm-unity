@@ -14,7 +14,53 @@ MonoBehaviour:
   scenes:
   - speaker: Mayor
     dialog: Hey how are you? I'm the mayor!
+    addCharacters:
+    - mayor
+    removeCharacters: []
   - speaker: Wizard
     dialog: No one cares who you are!
+    addCharacters:
+    - wizard
+    removeCharacters: []
   - speaker: Mayor
     dialog: Rude!
+    addCharacters: []
+    removeCharacters: []
+  - speaker: Wizard
+    dialog: "Imma speak some latin.\n\nLorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Nullam cursus commodo nisi. Proin blandit condimentum arcu sit amet faucibus.
+      Vivamus aliquet nunc a eleifend venenatis. Integer in magna viverra, vehicula
+      ante in, elementum libero. Cras tincidunt erat non lacus lacinia consectetur.
+      Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+      himenaeos. Duis eu blandit ante, vitae mollis neque.\r\n\r\nDuis in odio eu
+      quam aliquam porttitor a sit amet ligula. Nullam mattis nulla eros, et vulputate
+      massa bibendum sit amet. Nullam laoreet ante in elit lacinia finibus. Phasellus
+      non placerat ligula. Donec dignissim est libero, quis maximus elit malesuada
+      vitae. Etiam ac leo molestie, congue magna quis, volutpat felis. Morbi sit amet
+      erat quis sapien tempor tristique sit amet at mi. Nulla facilisi. Morbi gravida,
+      leo vel elementum varius, velit magna vestibulum tellus, nec tempor massa turpis
+      non ligula. Ut bibendum velit dictum velit maximus, nec efficitur mi tincidunt.
+      Nulla rhoncus felis quis dolor rutrum ullamcorper. Aenean placerat turpis commodo
+      lorem cursus, quis commodo urna dapibus. Vivamus accumsan, odio sed ultricies
+      placerat, lectus velit cursus quam, vel fermentum massa ex non sem. Maecenas
+      consequat massa at egestas maximus.\r\n\r\nInteger venenatis nulla massa, at
+      accumsan nisi cursus ut. Donec et feugiat sem. Nulla facilisi. Suspendisse potenti.
+      Etiam a cursus massa. Donec nulla dui, ornare a rhoncus quis, tincidunt in massa.
+      Morbi quam magna, condimentum et nisl eget, feugiat imperdiet dolor. Nulla efficitur
+      urna quis bibendum aliquet.\r\n\r\nQuisque at finibus dui, sed condimentum diam.
+      Mauris vitae sodales ligula. Maecenas at lobortis purus, et efficitur elit.
+      Ut sit amet pellentesque nisi, vel consectetur urna. In hac habitasse platea
+      dictumst. Phasellus scelerisque convallis mi, vel consequat tellus efficitur
+      eu. Sed at tellus sed sem pulvinar scelerisque quis et eros. Maecenas tincidunt
+      pellentesque libero. Phasellus luctus lectus non risus bibendum posuere. Duis
+      ut sagittis massa, eu aliquam augue.\r\n\r\nDonec pharetra mollis egestas. Phasellus
+      lobortis felis ut quam bibendum placerat. Vestibulum nec commodo dui. Suspendisse
+      accumsan velit elementum odio elementum, non ultricies nulla rhoncus. Vestibulum
+      posuere pretium velit, eu consequat massa hendrerit a. Ut consectetur metus
+      sagittis risus vestibulum, in dignissim libero lobortis. Donec tincidunt pharetra
+      dignissim. Aliquam dui odio, faucibus vel augue at, tristique posuere eros.
+      Quisque pulvinar metus ut ante congue, a blandit arcu euismod. Mauris bibendum
+      tellus nec purus lacinia cursus."
+    addCharacters: []
+    removeCharacters:
+    - mayor

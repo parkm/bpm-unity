@@ -7,6 +7,8 @@ public class CutsceneAsset : ScriptableObject {
         public string speaker;
         [TextArea()]
         public string dialog;
+        public string[] addCharacters;
+        public string[] removeCharacters;
     }
     public Scene[] scenes;
 }
