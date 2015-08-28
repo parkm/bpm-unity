@@ -3,6 +3,16 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class CutsceneManager : MonoBehaviour {
+    // Shows this cutscene unless it is null.
+    private static CutsceneAsset cutsceneToShow;
+    // Goes to this scene once the cutscene has finished unless it is null.
+    private static Object cutsceneFinishDest;
+    public static void ShowCutscene(CutsceneAsset cutscene, Object sceneDest) {
+        cutsceneToShow = cutscene;
+        cutsceneFinishDest = sceneDest;
+        Application.LoadLevel("Cutscene");
+    }
+
     public CutsceneAsset cutscene;
     public Text speakerText;
     public Text dialogText;
@@ -20,6 +30,11 @@ public class CutsceneManager : MonoBehaviour {
     Dictionary<string, GameObject> addedCharacterById = new Dictionary<string, GameObject>();
 
     void Start() {
+        if (CutsceneManager.cutsceneToShow != null) {
+            this.cutscene = CutsceneManager.cutsceneToShow;
+            CutsceneManager.cutsceneToShow = null;
+        }
+
         foreach (CharacterMap cm in this.characters) {
             characterById.Add(cm.characterId, cm);
         }
@@ -35,8 +50,13 @@ public class CutsceneManager : MonoBehaviour {
     void GotoNextScene() {
         this.sceneIndex++;
         if (this.sceneIndex >= this.cutscene.scenes.Length) {
-            Destroy(this.gameObject);
-            return;
+            if (CutsceneManager.cutsceneFinishDest == null) {
+                Destroy(this.gameObject);
+                return;
+            } else {
+                Application.LoadLevel(CutsceneManager.cutsceneFinishDest.name);
+                CutsceneManager.cutsceneFinishDest = null;
+            }
         } else {
             this.UpdateSceneUi();
         }

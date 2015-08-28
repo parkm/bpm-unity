@@ -19,6 +19,10 @@ public class QuestMenuTitleButton : MonoBehaviour {
             return;
         }
         QuestManager.Instance.CurrentQuest = quest;
-        Application.LoadLevel(quest.asset.scene.name);
+        if (quest.asset.startingCutscene == null) {
+            Application.LoadLevel(quest.asset.scene.name);
+        } else {
+            CutsceneManager.ShowCutscene(quest.asset.startingCutscene, quest.asset.scene);
+        }
     }
 }
