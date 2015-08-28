@@ -41,13 +41,7 @@ public class CutsceneManager : MonoBehaviour {
         this.UpdateSceneUi();
     }
 
-    void Update() {
-        if (Input.GetMouseButtonUp(0)) {
-            this.GotoNextScene();
-        }
-    }
-
-    void GotoNextScene() {
+    public void GotoNextScene() {
         this.sceneIndex++;
         if (this.sceneIndex >= this.cutscene.scenes.Length) {
             if (CutsceneManager.cutsceneFinishDest == null) {
