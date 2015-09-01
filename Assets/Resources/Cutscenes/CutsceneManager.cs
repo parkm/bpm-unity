@@ -44,15 +44,19 @@ public class CutsceneManager : MonoBehaviour {
     public void GotoNextScene() {
         this.sceneIndex++;
         if (this.sceneIndex >= this.cutscene.scenes.Length) {
-            if (CutsceneManager.cutsceneFinishDest == null) {
-                Destroy(this.gameObject);
-                return;
-            } else {
-                Application.LoadLevel(CutsceneManager.cutsceneFinishDest.name);
-                CutsceneManager.cutsceneFinishDest = null;
-            }
+            this.EndCutscene();
         } else {
             this.UpdateSceneUi();
+        }
+    }
+
+    public void EndCutscene() {
+        if (CutsceneManager.cutsceneFinishDest == null) {
+            Destroy(this.gameObject);
+            return;
+        } else {
+            Application.LoadLevel(CutsceneManager.cutsceneFinishDest.name);
+            CutsceneManager.cutsceneFinishDest = null;
         }
     }
 
