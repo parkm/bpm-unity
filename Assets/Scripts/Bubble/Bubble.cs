@@ -4,14 +4,17 @@ using System;
 
 public class Bubble : MonoBehaviour {
     public float descendSpeed = 0.25f;
-    public int health = 1;
+    public int maxHealth = 1;
+    public int health;
     public GameObject bubblePopped;
+    public BubbleArmor bubbleArmor;
 
     public static event Action<Bubble> OnPop = delegate(Bubble bubble) {};
 
+
     // Use this for initialization
     void Start () {
-
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -25,8 +28,13 @@ public class Bubble : MonoBehaviour {
         }
     }
 
+    public void Damage(int amt) {
+        health -= amt;
+        bubbleArmor.Damage(amt);
+    }
+
     public void OnPinCollision(Pin pin) {
-        health -= pin.damage;
+        Damage(pin.damage);
         if (health < 1) {
             OnDeathFromPin();
         } else {

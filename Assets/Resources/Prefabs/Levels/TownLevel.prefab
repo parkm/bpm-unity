@@ -232,8 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6bab971037c074fa4c75fdd1bc6557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 169358, guid: 53549e0c0cc4ebf419b7f365149a4a3f, type: 2}
+  bubble: {fileID: 11433050, guid: 0ba867c985a34cc48bf7b380b1e93023, type: 2}
   spawnTime: .5
+  minHealth: 1
+  maxHealth: 20
 --- !u!212 &21299048
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -266,7 +268,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: bubble
+      value: 
+      objectReference: {fileID: 11498440, guid: e56b60dfc522eb94a829d328d9557361,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160438}

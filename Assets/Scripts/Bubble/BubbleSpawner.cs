@@ -30,7 +30,7 @@ public class BubbleSpawner : MonoBehaviour {
         Vector3 min = mesh.bounds.min;
         Vector3 max = mesh.bounds.max;
         bubble.transform.position = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
-        bubble.health = Random.Range(minHealth, maxHealth);
+        bubble.maxHealth = Random.Range(minHealth, maxHealth);
         //Debug.Log (bubble.transform.position);
         Invoke("spawn", spawnTime);
     }
