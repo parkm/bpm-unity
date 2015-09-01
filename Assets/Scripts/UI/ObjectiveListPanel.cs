@@ -7,17 +7,30 @@ public class ObjectiveListPanel : MonoBehaviour {
     QuestManager questMan;
 
     void Start() {
+        bool view = true;
         if (QuestManager.Instance != null) {
-            questMan = QuestManager.Instance;
-            if (questMan.CurrentQuest == null) return;
-
-            foreach (QuestObjective objective in questMan.CurrentQuest.objectives) {
-                var listItem = (ObjectiveListItem) Instantiate(objectiveListItemPrefab);
-                listItem.SetObjective(objective);
-                listItem.transform.SetParent(this.transform);
+            this.questMan = QuestManager.Instance;
+            if (this.questMan.CurrentQuest == null) {
+                view = false;
+            } else {
+                this.questMan.CurrentQuest.OnQuestStart += OnQuestStart;
             }
+
         } else {
-            this.gameObject.SetActive(false);
+            view = false;
+        }
+        this.gameObject.SetActive(view);
+    }
+
+    void OnDestroy() {
+        questMan.CurrentQuest.OnQuestStart -= OnQuestStart;
+    }
+
+    void OnQuestStart(Quest quest) {
+        foreach (QuestObjective objective in quest.objectives) {
+            var listItem = (ObjectiveListItem) Instantiate(objectiveListItemPrefab);
+            listItem.SetObjective(objective);
+            listItem.transform.SetParent(this.transform);
         }
     }
 }

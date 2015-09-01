@@ -43,5 +43,4 @@ public abstract class QuestObjective {
             this.attributes.Add(attribute.key, attribute.value);
         }
     }
-
 }
