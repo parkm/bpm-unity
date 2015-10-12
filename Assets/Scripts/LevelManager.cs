@@ -35,7 +35,11 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void ExitLevel() {
-        Application.LoadLevel("questMenu");
+        if (this.quest == null || this.quest.asset.endingCutscene == null) {
+            Application.LoadLevel("questMenu");
+        } else {
+            CutsceneManager.ShowCutscene(this.quest.asset.endingCutscene, "questMenu");
+        }
     }
 
     void Update() {

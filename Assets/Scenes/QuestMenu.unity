@@ -329,7 +329,7 @@ Prefab:
     - target: {fileID: 11406580, guid: 44db7e807fcb765488a07c63cf3566ab, type: 2}
       propertyPath: startingQuest
       value: 
-      objectReference: {fileID: 11400000, guid: 95e66759ed979c24b8e67b8fe4a5491d,
+      objectReference: {fileID: 11400000, guid: 8fe602d225803bc4cbc6e8938890fc7d,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44db7e807fcb765488a07c63cf3566ab, type: 2}

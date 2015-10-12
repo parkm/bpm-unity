@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7b9f9ed7bdd0948b33443d7ec3c214, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier: 
+  scenes:
+  - speaker: Mayor
+    dialog: You there!
+    addCharacters:
+    - mayor
+    removeCharacters: []
+  - speaker: Mayor
+    dialog: "Yeah you, take this! \n\n*Receive a weapon*"
+    addCharacters: []
+    removeCharacters: []
+  - speaker: Mayor
+    dialog: Ahhh! Hurry up before it's too late, get them!
+    addCharacters: []
+    removeCharacters: []

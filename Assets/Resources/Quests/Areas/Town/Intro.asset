@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da240e7b82052ea4890cc3c2c5edc2ca, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier: 
+  id: intro
+  questName: Help! I need somebody
+  description: Not just anybody.
+  rewardXp: 100
+  scene: {fileID: 102900000, guid: 649a28a7a727f5a419c2ad1b9346d848, type: 3}
+  startingCutscene: {fileID: 11400000, guid: 59092b4cb783608458f20aad0d742774, type: 2}
+  endingCutscene: {fileID: 11400000, guid: 5f0facc2a9bdea146be07a52cf2f79e5, type: 2}
+  unlocks:
+  - {fileID: 11400000, guid: 95e66759ed979c24b8e67b8fe4a5491d, type: 2}
+  objectiveData:
+  - objectiveType: 0
+    goal: 1
+    attributes: []

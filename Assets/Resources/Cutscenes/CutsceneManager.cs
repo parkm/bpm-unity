@@ -6,11 +6,14 @@ public class CutsceneManager : MonoBehaviour {
     // Shows this cutscene unless it is null.
     private static CutsceneAsset cutsceneToShow;
     // Goes to this scene once the cutscene has finished unless it is null.
-    private static Object cutsceneFinishDest;
-    public static void ShowCutscene(CutsceneAsset cutscene, Object sceneDest) {
+    private static string cutsceneFinishDest;
+    public static void ShowCutscene(CutsceneAsset cutscene, string sceneDest) {
         cutsceneToShow = cutscene;
         cutsceneFinishDest = sceneDest;
         Application.LoadLevel("Cutscene");
+    }
+    public static void ShowCutscene(CutsceneAsset cutscene, Object sceneDest) {
+        CutsceneManager.ShowCutscene(cutscene, sceneDest.name);
     }
 
     public CutsceneAsset cutscene;
@@ -55,7 +58,7 @@ public class CutsceneManager : MonoBehaviour {
             Destroy(this.gameObject);
             return;
         } else {
-            Application.LoadLevel(CutsceneManager.cutsceneFinishDest.name);
+            Application.LoadLevel(CutsceneManager.cutsceneFinishDest);
             CutsceneManager.cutsceneFinishDest = null;
         }
     }
