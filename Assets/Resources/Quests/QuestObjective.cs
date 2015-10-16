@@ -8,6 +8,7 @@ public abstract class QuestObjective {
 
     public ObjectiveInfo.Types type;
     public string goal;
+    public UnityEngine.Object relatedObject;
 
     public Dictionary<string, string> attributes;
 
@@ -38,6 +39,7 @@ public abstract class QuestObjective {
     public void SetData(QuestAsset.ObjectiveData data) {
         this.type = data.objectiveType;
         this.goal = data.goal;
+        this.relatedObject = data.relatedObject;
 
         foreach (QuestAsset.ObjectiveData.Attribute attribute in data.attributes) {
             this.attributes.Add(attribute.key, attribute.value);

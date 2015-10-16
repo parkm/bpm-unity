@@ -23,4 +23,9 @@ MonoBehaviour:
   objectiveData:
   - objectiveType: 0
     goal: 1
+    relatedObject: {fileID: 0}
+    attributes: []
+  - objectiveType: 2
+    goal: 1
+    relatedObject: {fileID: 146598, guid: 37df5a794bc1ecf4c9a2098a23925eef, type: 2}
     attributes: []

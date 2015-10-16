@@ -17,6 +17,7 @@ public class QuestAsset : ScriptableObject {
     public class ObjectiveData {
         public ObjectiveInfo.Types objectiveType;
         public string goal;
+        public UnityEngine.Object relatedObject;
 
         [System.NonSerialized]
         public bool completed = false;
