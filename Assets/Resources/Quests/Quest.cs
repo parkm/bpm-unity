@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class Quest {
     public QuestAsset asset;
@@ -12,6 +13,8 @@ public class Quest {
 
     public bool completed = false;
     public bool started = false; // Has the quest been started?
+
+    public event Action<Quest> OnQuestStart = delegate(Quest quest) {};
 
     public Quest(QuestAsset asset) {
         this.asset = asset;
@@ -27,6 +30,7 @@ public class Quest {
         foreach (QuestObjective objective in this.objectives) {
             objective.OnQuestStart(levelMan);
         }
+        this.OnQuestStart(this);
     }
 
     // Ends the quest which will remove events from the objectives.

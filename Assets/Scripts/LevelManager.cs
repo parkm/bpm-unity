@@ -13,14 +13,16 @@ public class LevelManager : MonoBehaviour {
             questMan = QuestManager.Instance;
             quest = questMan.CurrentQuest;
 
-            quest.Start(this);
+            if (this.quest != null)
+                quest.Start(this);
             questMan.OnQuestComplete += OnQuestComplete;
         }
     }
 
     void OnDestroy() {
         if (questMan != null) {
-            quest.End(this);
+            if (this.quest != null)
+                quest.End(this);
             questMan.OnQuestComplete -= OnQuestComplete;
         }
     }
@@ -33,7 +35,11 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void ExitLevel() {
-        Application.LoadLevel("questMenu");
+        if (this.quest == null || this.quest.asset.endingCutscene == null) {
+            Application.LoadLevel("questMenu");
+        } else {
+            CutsceneManager.ShowCutscene(this.quest.asset.endingCutscene, "questMenu");
+        }
     }
 
     void Update() {

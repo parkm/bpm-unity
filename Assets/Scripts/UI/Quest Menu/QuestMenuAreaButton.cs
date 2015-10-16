@@ -21,19 +21,21 @@ public class QuestMenuAreaButton : MonoBehaviour {
             dropDown.SetSiblingIndex(this.transform.GetSiblingIndex()+1);
             this.questDropDown = dropDown;
 
-            foreach (Quest quest in this.quests) {
-                Transform questButton = Instantiate(this.questButton);
-                questButton.Find("Text").GetComponent<Text>().text = quest.asset.questName;
-                questButton.GetComponent<QuestMenuTitleButton>().quest = quest;
-                questButton.SetParent(dropDown);
-            }
-
-            // Debug
-            foreach (Object scene in this.otherScenes) {
-                Transform questButton = Instantiate(this.questButton);
-                questButton.Find("Text").GetComponent<Text>().text = scene.name;
-                questButton.GetComponent<QuestMenuTitleButton>().scene = scene;
-                questButton.SetParent(dropDown);
+            if (this.quests == null) {
+                // Debug
+                foreach (Object scene in this.otherScenes) {
+                    Transform questButton = Instantiate(this.questButton);
+                    questButton.Find("Text").GetComponent<Text>().text = scene.name;
+                    questButton.GetComponent<QuestMenuTitleButton>().scene = scene;
+                    questButton.SetParent(dropDown);
+                }
+            } else {
+                foreach (Quest quest in this.quests) {
+                    Transform questButton = Instantiate(this.questButton);
+                    questButton.Find("Text").GetComponent<Text>().text = quest.asset.questName;
+                    questButton.GetComponent<QuestMenuTitleButton>().quest = quest;
+                    questButton.SetParent(dropDown);
+                }
             }
         } else {
             this.questDropDown.gameObject.SetActive(!questDropDown.gameObject.activeSelf);

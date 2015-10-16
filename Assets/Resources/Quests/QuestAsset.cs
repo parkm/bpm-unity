@@ -8,6 +8,8 @@ public class QuestAsset : ScriptableObject {
     public string description;
     public int rewardXp;
     public Object scene;
+    public CutsceneAsset startingCutscene;
+    public CutsceneAsset endingCutscene;
 
     public QuestAsset[] unlocks = new QuestAsset[1];
 

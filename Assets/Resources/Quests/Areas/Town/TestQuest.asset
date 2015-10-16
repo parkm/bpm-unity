@@ -15,6 +15,7 @@ MonoBehaviour:
   questName: Test Quest
   description: 
   rewardXp: 0
-  scene: {fileID: 0}
+  scene: {fileID: 102900000, guid: 649a28a7a727f5a419c2ad1b9346d848, type: 3}
+  startingCutscene: {fileID: 11400000, guid: 3b946975831558a4b906bcb7acce5660, type: 2}
   unlocks: []
   objectiveData: []
