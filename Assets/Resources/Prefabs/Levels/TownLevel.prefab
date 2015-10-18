@@ -235,7 +235,7 @@ MonoBehaviour:
   bubble: {fileID: 11433050, guid: 0ba867c985a34cc48bf7b380b1e93023, type: 2}
   spawnTime: .5
   minHealth: 1
-  maxHealth: 20
+  maxHealth: 4
 --- !u!212 &21299048
 SpriteRenderer:
   m_ObjectHideFlags: 1

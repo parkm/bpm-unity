@@ -7,6 +7,8 @@ public class CollectableQuestItem : MonoBehaviour {
     Rigidbody2D rigidBody;
     public float torqueAmount = 100;
     public string itemName;
+    [Range(0, 1)]
+    public float spawnChance = 1;
 
     public static event Action<CollectableQuestItem> OnCollect = delegate(CollectableQuestItem item) {};
 

@@ -122,6 +122,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5055168
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -130,11 +131,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5890974
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -164,6 +165,8 @@ MonoBehaviour:
   health: 4
   bubblePopped: {fileID: 139878, guid: f8114c1eedd6eeb4f81dc7abc47e8c8d, type: 2}
   bubbleArmor: {fileID: 11474172}
+  drops:
+  - {fileID: 11422754, guid: 37df5a794bc1ecf4c9a2098a23925eef, type: 2}
 --- !u!114 &11460590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,7 +304,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: drops.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105728}

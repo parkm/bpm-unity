@@ -9,8 +9,9 @@ public class Bubble : MonoBehaviour {
     public GameObject bubblePopped;
     public BubbleArmor bubbleArmor;
 
-    public static event Action<Bubble> OnPop = delegate(Bubble bubble) {};
+    public CollectableQuestItem[] drops;
 
+    public static event Action<Bubble> OnPop = delegate(Bubble bubble) {};
 
     // Use this for initialization
     void Start () {
@@ -43,6 +44,12 @@ public class Bubble : MonoBehaviour {
     }
 
     public void OnDeathFromPin() {
+        foreach (CollectableQuestItem drop in drops) {
+            if (UnityEngine.Random.value < drop.spawnChance) {
+                Instantiate(drop, this.transform.position, Quaternion.identity);
+            }
+        }
+
         OnPop(this);
         Instantiate(bubblePopped, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
