@@ -31,14 +31,15 @@ public abstract class QuestObjective {
     public abstract string GetDescription();
 
     // Adds the events that complete endurance objectives.
-    public void AddEnduranceCompleteEvents() {
+    public void AddEnduranceCompleteEvents(LevelManager levelMan) {
         QuestManager.Instance.OnStandardObjectivesCompleted += OnEnduranceComplete;
-        //TODO: Add an event listener for OnQuestTimeComplete which should probably be in LevelManager when implemented
+        levelMan.OnQuestTimerComplete += OnEnduranceComplete;
     }
 
     // Removes the events that complete endurance objectives.
-    public void RemoveEnduranceCompleteEvents() {
+    public void RemoveEnduranceCompleteEvents(LevelManager levelMan) {
         QuestManager.Instance.OnStandardObjectivesCompleted -= OnEnduranceComplete;
+        levelMan.OnQuestTimerComplete -= OnEnduranceComplete;
     }
 
     public void Update() {

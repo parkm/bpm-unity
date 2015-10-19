@@ -14,6 +14,7 @@ MonoBehaviour:
   id: intro
   questName: Help! I need somebody
   description: Not just anybody.
+  time: 15
   rewardXp: 100
   scene: {fileID: 102900000, guid: 649a28a7a727f5a419c2ad1b9346d848, type: 3}
   startingCutscene: {fileID: 11400000, guid: 59092b4cb783608458f20aad0d742774, type: 2}

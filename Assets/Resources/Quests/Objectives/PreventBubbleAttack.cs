@@ -17,11 +17,11 @@ namespace QuestObjectives {
         public override void OnQuestStart(LevelManager levelMan) {
             this.tries = int.Parse(this.goal);
             Bubble.OnAttack += OnAttack;
-            this.AddEnduranceCompleteEvents();
+            this.AddEnduranceCompleteEvents(levelMan);
         }
         public override void OnQuestEnd(LevelManager levelMan) {
             Bubble.OnAttack -= OnAttack;
-            this.RemoveEnduranceCompleteEvents();
+            this.RemoveEnduranceCompleteEvents(levelMan);
         }
 
         void OnAttack(Bubble bubble) {

@@ -6,6 +6,8 @@ public class QuestAsset : ScriptableObject {
     public string questName;
     [TextArea()]
     public string description;
+    [Tooltip("Quest time limit in seconds.")]
+    public float time = 0;
     public int rewardXp;
     public Object scene;
     public CutsceneAsset startingCutscene;
