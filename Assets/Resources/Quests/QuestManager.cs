@@ -10,6 +10,9 @@ public class QuestManager : MonoBehaviour {
     public QuestAsset startingQuest;
 
     public event Action<Quest> OnQuestComplete = delegate(Quest quest) {};
+    public event Action<Quest> OnQuestFail = delegate(Quest quest) {};
+
+    public event Action OnStandardObjectivesCompleted = delegate() {};
 
     private List<Quest> availableQuests = new List<Quest>();
 
@@ -53,9 +56,22 @@ public class QuestManager : MonoBehaviour {
 
     public void OnQuestObjectiveComplete(QuestObjective objective) {
         Debug.Log("objective complete");
+
+        // Check if non-endurance objectives have all been completed.
+        if (this.CurrentQuest.standardObjectivesCompleted == false) {
+            if (this.CurrentQuest.StandardObjectivesCompleted()) {
+                OnStandardObjectivesCompleted();
+            }
+        }
+
         if (this.CurrentQuest.IsComplete()) {
             OnQuestComplete(this.CurrentQuest);
         }
+    }
+
+    public void OnQuestObjectiveFail(QuestObjective objective) {
+        Debug.Log("objective failed");
+        OnQuestFail(this.CurrentQuest);
     }
 
     public Quest GetQuestByAsset(QuestAsset asset) {

@@ -29,3 +29,7 @@ MonoBehaviour:
     goal: 1
     relatedObject: {fileID: 146598, guid: 37df5a794bc1ecf4c9a2098a23925eef, type: 2}
     attributes: []
+  - objectiveType: 3
+    goal: 5
+    relatedObject: {fileID: 0}
+    attributes: []

@@ -12,6 +12,7 @@ public class Bubble : MonoBehaviour {
     public CollectableQuestItem[] drops;
 
     public static event Action<Bubble> OnPop = delegate(Bubble bubble) {};
+    public static event Action<Bubble> OnAttack = delegate(Bubble bubble) {};
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,7 @@ public class Bubble : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.tag == "BubbleDestroyer") {
+            OnAttack(this);
             Destroy(this.gameObject);
         }
     }

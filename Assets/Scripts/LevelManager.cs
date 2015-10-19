@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour {
             if (this.quest != null)
                 quest.Start(this);
             questMan.OnQuestComplete += OnQuestComplete;
+            questMan.OnQuestFail += OnQuestFail;
         }
     }
 
@@ -24,6 +25,7 @@ public class LevelManager : MonoBehaviour {
             if (this.quest != null)
                 quest.End(this);
             questMan.OnQuestComplete -= OnQuestComplete;
+            questMan.OnQuestFail -= OnQuestFail;
         }
     }
 
@@ -32,6 +34,10 @@ public class LevelManager : MonoBehaviour {
         this.onQuestCompleteUi.SetActive(true);
 
         questMan.UnlockNewQuests(questMan.CurrentQuest);
+    }
+
+    void OnQuestFail(Quest quest) {
+        Debug.Log("quest failed");
     }
 
     public void ExitLevel() {

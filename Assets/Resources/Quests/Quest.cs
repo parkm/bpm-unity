@@ -12,6 +12,7 @@ public class Quest {
     public List<QuestObjective> objectives = new List<QuestObjective>();
 
     public bool completed = false;
+    public bool standardObjectivesCompleted = false;
     public bool started = false; // Has the quest been started?
 
     public event Action<Quest> OnQuestStart = delegate(Quest quest) {};
@@ -50,6 +51,7 @@ public class Quest {
         foreach (QuestAsset.ObjectiveData objectiveData in this.asset.objectiveData) {
             QuestObjective objective = QuestObjective.CreateObjective(objectiveData);
             objective.OnComplete += QuestManager.Instance.OnQuestObjectiveComplete;
+            objective.OnFail += QuestManager.Instance.OnQuestObjectiveFail;
             this.objectives.Add(objective);
         }
     }
@@ -82,6 +84,19 @@ public class Quest {
             }
         }
         this.completed = true;
+        return true;
+    }
+
+    // Returns if non-endurance quest objectives have been completed.
+    public bool StandardObjectivesCompleted() {
+        if (this.standardObjectivesCompleted) return true;
+        foreach (QuestObjective objective in this.objectives) {
+            if (objective.endurance) continue;
+            if (objective.completed == false) {
+                return false;
+            }
+        }
+        this.standardObjectivesCompleted = true;
         return true;
     }
 }
