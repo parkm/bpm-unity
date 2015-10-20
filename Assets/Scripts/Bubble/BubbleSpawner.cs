@@ -19,6 +19,15 @@ public class BubbleSpawner : MonoBehaviour {
     }
     public Wave[] waves;
 
+    [System.Serializable]
+    public class RepeatedWave {
+        public GameObject objectToSpawn;
+        public float spawnTime;
+        [System.NonSerialized]
+        public float spawnTimer = 0;
+    }
+    public RepeatedWave[] repeatedWaves;
+
     public float waveTimer = 0;
 
     MeshRenderer mesh;
@@ -35,8 +44,15 @@ public class BubbleSpawner : MonoBehaviour {
         foreach (Wave wave in this.waves) {
             if (wave.spawned) continue;
             if (this.waveTimer >= wave.spawnAtTime) {
-                this.SpawnWave(wave);
+                this.Spawn(wave.objectToSpawn, wave.amountToSpawn);
                 wave.spawned = true;
+            }
+        }
+        foreach (RepeatedWave wave in this.repeatedWaves) {
+            wave.spawnTimer += Time.deltaTime;
+            if (wave.spawnTimer >= wave.spawnTime) {
+                this.Spawn(wave.objectToSpawn);
+                wave.spawnTimer = 0;
             }
         }
     }
@@ -50,11 +66,11 @@ public class BubbleSpawner : MonoBehaviour {
         Invoke("Spawn", spawnTime);
     }
 
-    void SpawnWave(Wave wave) {
+    void Spawn(GameObject toSpawn, int amount=1) {
         Vector3 min = mesh.bounds.min;
         Vector3 max = mesh.bounds.max;
-        for (int i=0; i<wave.amountToSpawn; ++i) {
-            GameObject spawn = (GameObject) Instantiate(wave.objectToSpawn);
+        for (int i=0; i<amount; ++i) {
+            GameObject spawn = (GameObject) Instantiate(toSpawn);
             spawn.transform.position = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
         }
     }
