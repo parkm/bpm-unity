@@ -13,10 +13,13 @@ public class ArrowShooter : MonoBehaviour {
     private int ammo = 0;
     private float ammoRegenTimer = 0;
 
+    float pinSpeedMod;
+
     // Use this for initialization
     void Start () {
         this.ammo = this.ammoMax;
         ammoChange(this.ammo);
+        this.pinSpeedMod = UpgradeManager.Instance.abilityMan.GetAbilityValue("pinSpeed");
     }
 
     // Update is called once per frame
@@ -53,7 +56,7 @@ public class ArrowShooter : MonoBehaviour {
 
         Rigidbody2D a = pin.GetComponent<Rigidbody2D>();
         float angle = this.transform.rotation.eulerAngles.z * Mathf.Deg2Rad;
-        float mag = 200;
+        float mag = 200 * (this.pinSpeedMod+1);
         a.AddForce(new Vector2(Mathf.Cos(angle)*mag, Mathf.Sin(angle)*mag));
     }
 }
