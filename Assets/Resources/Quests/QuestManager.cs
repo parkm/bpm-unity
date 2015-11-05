@@ -8,13 +8,14 @@ public class QuestManager : MonoBehaviour {
 
     public QuestAreaAsset[] areas;
     public QuestAsset startingQuest;
+    public bool unlockAllQuests = false;
 
     public event Action<Quest> OnQuestComplete = delegate(Quest quest) {};
     public event Action<Quest> OnQuestFail = delegate(Quest quest) {};
 
     public event Action OnStandardObjectivesCompleted = delegate() {};
 
-    private List<Quest> availableQuests = new List<Quest>();
+    private HashSet<Quest> availableQuests = new HashSet<Quest>();
 
     private Dictionary<QuestAsset, Quest> questAssetToQuest = new Dictionary<QuestAsset, Quest>();
 
@@ -91,7 +92,7 @@ public class QuestManager : MonoBehaviour {
     }
 
     // Get all available quests.
-    public List<Quest> GetAvailableQuests() {
+    public HashSet<Quest> GetAvailableQuests() {
         return availableQuests;
     }
     // Get all available quests for an area.
@@ -127,4 +128,9 @@ public class QuestManager : MonoBehaviour {
         return true;
     }
 
+    public void UnlockAllQuests() {
+        foreach (Quest quest in this.GetQuests()) {
+            availableQuests.Add(quest);
+        }
+    }
 }
