@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour {
     }
 
     public void ExitLevel() {
-        if (this.quest == null || this.quest.asset.endingCutscene == null) {
+        if (this.quest == null || this.quest.asset.endingCutscene == null || !this.quest.completed) {
             Application.LoadLevel("questMenu");
         } else {
             CutsceneManager.ShowCutscene(this.quest.asset.endingCutscene, "questMenu");
