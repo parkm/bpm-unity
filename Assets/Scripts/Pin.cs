@@ -5,7 +5,9 @@ public class Pin : MonoBehaviour {
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
 
-    public Vector2 maxVelocity = new Vector2(5,5);
+    public float maxVelocity = 5;
+    // Max velocity for each axis
+    Vector2 maxDirectionVelocity;
 
     public int damage = 1;
 
@@ -23,7 +25,6 @@ public class Pin : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        capVelocity(maxVelocity.x, maxVelocity.y);
 
         lifeTimer += Time.deltaTime;
         float lifeRatio = lifeTimer / lifeTime;
@@ -36,27 +37,29 @@ public class Pin : MonoBehaviour {
         }
     }
 
+    void FixedUpdate() {
+        CapVelocity(this.maxDirectionVelocity.x, this.maxDirectionVelocity.y);
+    }
+
     public void Die() {
         Instantiate(pinDestroyed, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
-    void capVelocity(float x, float y) {
-        if (Mathf.Abs(rigidBody.velocity.x) > Mathf.Abs(x)) {
-            if (rigidBody.velocity.x >= 0) {
-                rigidBody.velocity = new Vector2(x, rigidBody.velocity.y);
-            } else {
-                rigidBody.velocity = new Vector2(-x, rigidBody.velocity.y);
-            }
-        }
+    void CapVelocity(float x, float y) {
+        Vector2 vel = rigidBody.velocity;
 
-        if (Mathf.Abs(rigidBody.velocity.y) > Mathf.Abs(y)) {
-            if (rigidBody.velocity.y >= 0) {
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, y);
-            } else {
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, -y);
-            }
-        }
+        if (rigidBody.velocity.x > x)
+            vel.x = x;
+        else if (rigidBody.velocity.x < -x)
+            vel.x = -x;
+
+        if (rigidBody.velocity.y > y)
+            vel.y = y;
+        else if (rigidBody.velocity.y < -y)
+            vel.y = -y;
+
+        rigidBody.velocity = vel;
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
@@ -65,8 +68,20 @@ public class Pin : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D() {
+    // Updates the rotation of the pin to match the direction that the rigid body is moving towards.
+    void UpdateAngle() {
         float angle = Mathf.Atan2(rigidBody.velocity.y, rigidBody.velocity.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+    void OnCollisionEnter2D() { this.UpdateAngle(); }
+    void OnCollisionExit2D()  { this.UpdateAngle(); }
+
+    // Launches the pin at the angle and force specified
+    public void Launch(float force, float angle) {
+        float xDir = Mathf.Cos(angle);
+        float yDir = Mathf.Sin(angle);
+        this.maxDirectionVelocity = new Vector2(Mathf.Abs(xDir * this.maxVelocity), Mathf.Abs(yDir * this.maxVelocity));
+        Debug.Log(this.maxDirectionVelocity);
+        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(xDir * force, yDir * force));
     }
 }

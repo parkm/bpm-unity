@@ -50,13 +50,12 @@ public class ArrowShooter : MonoBehaviour {
         this.ammo--;
         ammoChange(this.ammo);
 
-        GameObject pin = Instantiate(this.pin);
+        Pin pin = Instantiate(this.pin).GetComponent<Pin>();
         pin.transform.position = this.transform.position;
         pin.transform.rotation = this.transform.rotation;
 
-        Rigidbody2D a = pin.GetComponent<Rigidbody2D>();
         float angle = this.transform.rotation.eulerAngles.z * Mathf.Deg2Rad;
         float mag = 200 * (this.pinSpeedMod+1);
-        a.AddForce(new Vector2(Mathf.Cos(angle)*mag, Mathf.Sin(angle)*mag));
+        pin.Launch(mag, angle);
     }
 }
