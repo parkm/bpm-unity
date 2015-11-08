@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Pin : MonoBehaviour {
-    Rigidbody2D rigidBody;
-    SpriteRenderer spriteRenderer;
-
+[RequireComponent(typeof(Rigidbody2D))]
+public class Projectile : MonoBehaviour {
     public float maxVelocity = 5;
     // Max velocity for each axis
     Vector2 maxDirectionVelocity;
@@ -14,18 +12,19 @@ public class Pin : MonoBehaviour {
     public float lifeTime = 10;
     float lifeTimer = 0;
 
-    public GameObject pinDestroyed;
+    public GameObject destroyEffectPrefab;
+
+    Rigidbody2D rigidBody;
+    SpriteRenderer spriteRenderer;
 
     // Use this for initialization
     void Start () {
-        rigidBody = this.GetComponent<Rigidbody2D>();
-        spriteRenderer = this.GetComponent<SpriteRenderer>();
-        //Invoke ("destroy", 10);
+        this.rigidBody = this.GetComponent<Rigidbody2D>();
+        this.spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update () {
-
         lifeTimer += Time.deltaTime;
         float lifeRatio = lifeTimer / lifeTime;
 
@@ -42,7 +41,7 @@ public class Pin : MonoBehaviour {
     }
 
     public void Die() {
-        Instantiate(pinDestroyed, transform.position, Quaternion.identity);
+        Instantiate(this.destroyEffectPrefab, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
@@ -64,11 +63,11 @@ public class Pin : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.tag == "Bubble") {
-            collider.gameObject.GetComponent<Bubble>().OnPinCollision(this);
+            collider.gameObject.GetComponent<Bubble>().OnProjectileCollision(this);
         }
     }
 
-    // Updates the rotation of the pin to match the direction that the rigid body is moving towards.
+    // Updates the rotation of the projectile to match the direction that the rigid body is moving towards.
     void UpdateAngle() {
         float angle = Mathf.Atan2(rigidBody.velocity.y, rigidBody.velocity.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -76,12 +75,11 @@ public class Pin : MonoBehaviour {
     void OnCollisionEnter2D() { this.UpdateAngle(); }
     void OnCollisionExit2D()  { this.UpdateAngle(); }
 
-    // Launches the pin at the angle and force specified
+    // Launches the projectile at the angle and force specified
     public void Launch(float force, float angle) {
         float xDir = Mathf.Cos(angle);
         float yDir = Mathf.Sin(angle);
         this.maxDirectionVelocity = new Vector2(Mathf.Abs(xDir * this.maxVelocity), Mathf.Abs(yDir * this.maxVelocity));
-        Debug.Log(this.maxDirectionVelocity);
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(xDir * force, yDir * force));
     }
 }

@@ -40,9 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e00bc52aae3b534facccd771539807c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pin: {fileID: 131600, guid: abfb12b2f1061354fa57a70431942211, type: 2}
   ammoMax: 10
   ammoRegenTime: 2
+  weapon: {fileID: 11409930, guid: 14f8ff63ccccd9348a65edb9b6200721, type: 2}
 --- !u!212 &21216198
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -75,7 +75,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11409930, guid: 14f8ff63ccccd9348a65edb9b6200721,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128388}

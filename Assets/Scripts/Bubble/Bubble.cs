@@ -36,16 +36,16 @@ public class Bubble : MonoBehaviour {
         bubbleArmor.Damage(amt);
     }
 
-    public void OnPinCollision(Pin pin) {
-        Damage(pin.damage);
+    public void OnProjectileCollision(Projectile projectile) {
+        Damage(projectile.damage);
         if (health < 1) {
-            OnDeathFromPin();
+            OnDeathFromProjectile();
         } else {
-            pin.Die();
+            projectile.Die();
         }
     }
 
-    public void OnDeathFromPin() {
+    public void OnDeathFromProjectile() {
         foreach (CollectableQuestItem drop in drops) {
             if (UnityEngine.Random.value < drop.spawnChance) {
                 Instantiate(drop, this.transform.position, Quaternion.identity);
