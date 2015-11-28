@@ -14,14 +14,34 @@ public class Bubble : MonoBehaviour {
     public static event Action<Bubble> OnPop = delegate(Bubble bubble) {};
     public static event Action<Bubble> OnAttack = delegate(Bubble bubble) {};
 
+    public bool OnFire { get; private set; }
+    float fireTimer = 0;
+    float fireTime = 5f;
+    float fireDamageTimer = 0;
+    float fireDamageInterval = 1f;
+    public GameObject bubbleFireEffectPrefab;
+
     // Use this for initialization
     void Start () {
         health = maxHealth;
+        this.OnFire = false;
     }
 
     // Update is called once per frame
     void Update () {
         this.transform.position += new Vector3(0, -descendSpeed * Time.deltaTime);
+        if (this.OnFire) {
+            this.fireTimer += Time.deltaTime;
+            this.fireDamageTimer += Time.deltaTime;
+            if (this.fireDamageTimer >= this.fireDamageInterval) {
+                Damage(1);
+                if (health < 1) this.OnDeathFromProjectile();
+                this.fireDamageTimer = 0;
+            }
+            if (this.fireTimer >= this.fireTime) {
+                this.OnFire = false;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
@@ -41,6 +61,7 @@ public class Bubble : MonoBehaviour {
         if (health < 1) {
             OnDeathFromProjectile();
         } else {
+            if (projectile.CanIgnite) this.Ignite();
             projectile.Die();
         }
     }
@@ -55,5 +76,14 @@ public class Bubble : MonoBehaviour {
         OnPop(this);
         Instantiate(bubblePopped, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
+    }
+
+    // Adds fire ability effect to the bubble
+    public void Ignite() {
+        this.OnFire = true;
+        this.fireTimer = 0;
+        GameObject fireEffect = (GameObject) Instantiate(this.bubbleFireEffectPrefab);
+        fireEffect.transform.position = Vector3.zero;
+        fireEffect.transform.SetParent(this.transform, false);
     }
 }

@@ -320,6 +320,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 467864, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 450554, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 412952, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
   m_IsPrefabParent: 0
@@ -449,7 +461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: maxHealth
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: waves.Array.data[0].objectToSpawn
@@ -481,6 +493,14 @@ Prefab:
       objectReference: {fileID: 157362, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: repeatedWaves.Array.data[0].spawnTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
+      propertyPath: repeatedWaves.Array.data[1].objectToSpawn
+      value: 
+      objectReference: {fileID: 157362, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
+    - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
+      propertyPath: repeatedWaves.Array.data[1].spawnTime
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []

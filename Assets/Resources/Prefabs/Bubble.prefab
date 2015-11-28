@@ -184,6 +184,8 @@ MonoBehaviour:
   bubblePopped: {fileID: 139878, guid: f8114c1eedd6eeb4f81dc7abc47e8c8d, type: 2}
   bubbleArmor: {fileID: 11474172}
   drops: []
+  bubbleFireEffectPrefab: {fileID: 102228, guid: b39812b461e877b43a5f7b10e32dddb2,
+    type: 2}
 --- !u!114 &11460590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,6 +333,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11422754, guid: 37df5a794bc1ecf4c9a2098a23925eef,
         type: 2}
+    - target: {fileID: 0}
+      propertyPath: bubbleFireEffectPrefab
+      value: 
+      objectReference: {fileID: 102228, guid: b39812b461e877b43a5f7b10e32dddb2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105728}

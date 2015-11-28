@@ -46,6 +46,9 @@ MonoBehaviour:
   - key: newAbility
     description: Unlocks new ability
     stacked: 0
+  - key: fire
+    description: Projectiles can ignite bubbles of fire
+    stacked: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

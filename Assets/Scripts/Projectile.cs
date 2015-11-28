@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour {
 
     public GameObject destroyEffectPrefab;
 
+    public bool CanIgnite { get; private set; }
+
     Rigidbody2D rigidBody;
     SpriteRenderer spriteRenderer;
 
@@ -21,6 +23,7 @@ public class Projectile : MonoBehaviour {
     void Start () {
         this.rigidBody = this.GetComponent<Rigidbody2D>();
         this.spriteRenderer = this.GetComponent<SpriteRenderer>();
+        this.CanIgnite = UpgradeManager.Instance.abilityMan.GetAbilityBoolValue("fire");
     }
 
     // Update is called once per frame
@@ -82,4 +85,6 @@ public class Projectile : MonoBehaviour {
         this.maxDirectionVelocity = new Vector2(Mathf.Abs(xDir * this.maxVelocity), Mathf.Abs(yDir * this.maxVelocity));
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(xDir * force, yDir * force));
     }
+
+
 }
