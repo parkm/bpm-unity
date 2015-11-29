@@ -47,7 +47,10 @@ MonoBehaviour:
     description: Unlocks new ability
     stacked: 0
   - key: fire
-    description: Projectiles can ignite bubbles of fire
+    description: Projectiles can ignite bubbles on fire
+    stacked: 0
+  - key: chainLightning
+    description: Hitting a bubble sends a chain of lightning to other bubbles
     stacked: 0
 --- !u!1001 &100100000
 Prefab:

@@ -19,6 +19,7 @@ public class UpgradeManager : MonoBehaviour {
 
         abilityMan.InitAbilities(this.abilityTemplates);
         abilityMan.AddAbilityValue("pinSpeed", new AbilityManager.AbilityValue(2.50f));
-        abilityMan.AddAbilityValue("fire", new AbilityManager.AbilityValue(1));
+        //abilityMan.AddAbilityValue("fire", new AbilityManager.AbilityValue(1));
+        abilityMan.AddAbilityValue("chainLightning", new AbilityManager.AbilityValue(1));
     }
 }

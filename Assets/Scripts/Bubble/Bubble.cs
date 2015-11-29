@@ -20,6 +20,7 @@ public class Bubble : MonoBehaviour {
     float fireDamageTimer = 0;
     float fireDamageInterval = 1f;
     public GameObject bubbleFireEffectPrefab;
+    public GameObject chainLightningPrefab;
 
     // Use this for initialization
     void Start () {
@@ -56,7 +57,16 @@ public class Bubble : MonoBehaviour {
         bubbleArmor.Damage(amt);
     }
 
+    public void OnLightningAttack() {
+        Damage(1);
+        if (health < 1) {
+            OnDeathFromProjectile();
+        }
+    }
+
     public void OnProjectileCollision(Projectile projectile) {
+        if (UpgradeManager.Instance.abilityMan.GetAbilityBoolValue("chainLightning"))
+            this.CreateLightningChain();
         Damage(projectile.damage);
         if (health < 1) {
             OnDeathFromProjectile();
@@ -85,5 +95,16 @@ public class Bubble : MonoBehaviour {
         GameObject fireEffect = (GameObject) Instantiate(this.bubbleFireEffectPrefab);
         fireEffect.transform.position = Vector3.zero;
         fireEffect.transform.SetParent(this.transform, false);
+    }
+
+    // Continues a chain if prevChain is provided otherwise it creates a new chain.
+    public void CreateLightningChain(ChainLightning prevChain=null) {
+        ChainLightning chain = Instantiate(this.chainLightningPrefab).GetComponent<ChainLightning>();
+        chain.originBubble = this;
+        if (prevChain == null)
+            chain.chainCount = 8;
+        else
+            chain.InheritChain(prevChain);
+        chain.transform.position = this.transform.position;
     }
 }
