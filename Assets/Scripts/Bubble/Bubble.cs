@@ -22,15 +22,20 @@ public class Bubble : MonoBehaviour {
     public GameObject bubbleFireEffectPrefab;
     public GameObject chainLightningPrefab;
 
+    // Will the bubble be slowed when any damage is taken?
+    bool slowedOnDamage = false;
+    float slowedSpeedMod = 1f;
+
     // Use this for initialization
     void Start () {
         health = maxHealth;
         this.OnFire = false;
+        this.slowedOnDamage = UpgradeManager.Instance.abilityMan.GetAbilityBoolValue("slowIce");
     }
 
     // Update is called once per frame
     void Update () {
-        this.transform.position += new Vector3(0, -descendSpeed * Time.deltaTime);
+        this.transform.position += new Vector3(0, -(this.descendSpeed * this.slowedSpeedMod) * Time.deltaTime);
         if (this.OnFire) {
             this.fireTimer += Time.deltaTime;
             this.fireDamageTimer += Time.deltaTime;
@@ -55,6 +60,9 @@ public class Bubble : MonoBehaviour {
     public void Damage(int amt) {
         health -= amt;
         bubbleArmor.Damage(amt);
+        if (this.slowedOnDamage) {
+            this.slowedSpeedMod = UpgradeManager.Instance.abilityMan.GetAbilityValue("slowIceSpeedMod");
+        }
     }
 
     public void OnLightningAttack() {

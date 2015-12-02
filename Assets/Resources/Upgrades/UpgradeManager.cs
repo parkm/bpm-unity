@@ -21,5 +21,7 @@ public class UpgradeManager : MonoBehaviour {
         abilityMan.AddAbilityValue("pinSpeed", new AbilityManager.AbilityValue(2.50f));
         //abilityMan.AddAbilityValue("fire", new AbilityManager.AbilityValue(1));
         abilityMan.AddAbilityValue("chainLightning", new AbilityManager.AbilityValue(1));
+        abilityMan.AddAbilityValue("slowIce", new AbilityManager.AbilityValue(1));
+        abilityMan.AddAbilityValue("slowIceSpeedMod", new AbilityManager.AbilityValue(0.5f));
     }
 }

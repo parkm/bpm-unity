@@ -52,6 +52,12 @@ MonoBehaviour:
   - key: chainLightning
     description: Hitting a bubble sends a chain of lightning to other bubbles
     stacked: 0
+  - key: slowIce
+    description: Bubbles that receive damage are slowed
+    stacked: 0
+  - key: slowIceSpeedMod
+    description: How slow do bubbles go when frozen
+    stacked: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
