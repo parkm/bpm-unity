@@ -466,7 +466,7 @@ Prefab:
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: waves.Array.data[0].objectToSpawn
       value: 
-      objectReference: {fileID: 131600, guid: abfb12b2f1061354fa57a70431942211, type: 2}
+      objectReference: {fileID: 157362, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: waves.Array.data[0].spawnAtTime
       value: 2.04999995
@@ -478,7 +478,7 @@ Prefab:
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: waves.Array.data[1].objectToSpawn
       value: 
-      objectReference: {fileID: 131600, guid: abfb12b2f1061354fa57a70431942211, type: 2}
+      objectReference: {fileID: 157362, guid: d4ede399b731c9446a446260ee68c20c, type: 2}
     - target: {fileID: 11467390, guid: d3aa4aca573b5ce408c5fd837188c358, type: 2}
       propertyPath: waves.Array.data[1].spawnAtTime
       value: 6.07999992
