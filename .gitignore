@@ -1,6 +1,8 @@
+Logs
 Library
 Temp
 test_Data
+.vsconfig
 
 *.csproj
 *.sln
